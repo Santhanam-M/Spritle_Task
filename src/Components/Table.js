@@ -1,10 +1,14 @@
 const Table = (props) => {
- const {monitorData} = props
+  const { monitorData } = props;
 
- 
- if (monitorData.length === 0) {
-  return <p>No Data Found</p>;
-}
+  if (monitorData.length === 0) {
+    return (
+      <p className="text-danger">
+        No Data Found. Please make sure your proxy server is running to fetch
+        and update the data for the table.
+      </p>
+    );
+  }
 
   return (
     <div className="row justify-content-center">
@@ -22,15 +26,17 @@ const Table = (props) => {
             </thead>
 
             <tbody>
-                {monitorData.map((ele)=>{
-                  return <tr key={ele.id}>
-                            <td>{ele.name}</td>
-                            <td>{ele.type}</td>
-                            <td>{ele.message}</td>
-                            <td>{ele.query}</td>
-                            <td>{ele.creator.name}</td>
-                          </tr>
-                })}
+              {monitorData.map((ele) => {
+                return (
+                  <tr key={ele.id}>
+                    <td>{ele.name}</td>
+                    <td>{ele.type}</td>
+                    <td>{ele.message}</td>
+                    <td>{ele.query}</td>
+                    <td>{ele.creator.name}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
